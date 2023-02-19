@@ -77,7 +77,7 @@ rates_and_preds.take(3)
 
 
 #testing the model
-model = ALS.train(testing_RDD, best_rank, seed=seed, iterations=iterations,
+model = ALS.train(test_RDD, best_rank, seed=seed, iterations=iterations,
                       lambda_=regularization_parameter)
 predictions = model.predictAll(test_for_predict_RDD).map(lambda r: ((r[0], r[1]), r[2]))
 rates_and_preds = test_RDD.map(lambda r: ((int(r[0]), int(r[1])), float(r[2]))).join(predictions)
