@@ -176,6 +176,7 @@ new_user_recommendations_rating_title_and_count_RDD = \
     new_user_recommendations_rating_RDD.join(big_movies_titles).join(movie_rating_counts_RDD)
 new_user_recommendations_rating_title_and_count_RDD.take(3)
 
+# Transforming into (Title, Ratings, Ratings count) 
 new_user_recommendations_rating_title_and_count_RDD = \
     new_user_recommendations_rating_title_and_count_RDD.map(lambda r: (r[1][0][1], r[1][0][0], r[1][1]))
     
